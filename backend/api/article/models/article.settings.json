@@ -35,6 +35,9 @@
     "slug": {
       "type": "string",
       "unique": true
+    },
+    "excerpt": {
+      "type": "text"
     }
   }
 }
