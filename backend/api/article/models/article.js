@@ -1,5 +1,7 @@
 'use strict';
 
+const md5file = require('md5-file');
+
 const slugify = require('slugify');
 const slugifyOptions = {
   replacement: '-',  // replace spaces with replacement character, defaults to `-`
