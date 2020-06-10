@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="uk-child-width-1-2" uk-grid>
-      <div>
+      <div>        
         <router-link
           v-for="article in leftArticles"
-          :to="{ name: 'articles-id', params: { id: article.id } }"
+          :to="localePath({ name: 'articles-id', params: { id: article[slug_] } })"
           class="uk-link-reset"
           :key="article.id"
         >
@@ -18,9 +18,9 @@
                 v-if="article.category"
                 class="uk-text-uppercase"
               >
-                {{ article.category.name }}
+                {{ article.category[name_] }}
               </p>
-              <p id="title" class="uk-text-large">{{ article.title }}</p>
+              <p id="title" class="uk-text-large">{{ article[title_] }}</p>
             </div>
           </div>
         </router-link>
@@ -29,7 +29,7 @@
         <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
           <router-link
             v-for="article in rightArticles"
-            :to="{ name: 'articles-id', params: { id: article.id } }"
+            :to="localePath({ name: 'articles-id', params: { id: article[slug_] } })"
             class="uk-link-reset"
             :key="article.id"
           >
@@ -43,9 +43,9 @@
                   v-if="article.category"
                   class="uk-text-uppercase"
                 >
-                  {{ article.category.name }}
+                  {{ article.category[name_] }} 
                 </p>
-                <p id="title" class="uk-text-large">{{ article.title }}</p>
+                <p id="title" class="uk-text-large">{{ article[title_] }}</p>
               </div>
             </div>
           </router-link>
@@ -74,7 +74,16 @@ export default {
     },
     rightArticles() {
       return this.articles.slice(this.leftArticlesCount, this.articles.length);
-    }
+    },
+    slug_() {
+      return `slug_` + this.$i18n.locale
+    },
+    title_() {
+      return `title_` + this.$i18n.locale
+    },
+    name_() {
+      return `name_` + this.$i18n.locale
+    },
   }
 };
 </script>

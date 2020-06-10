@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_seo_seos",
+  "info": {
+    "name": "seo",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "og_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

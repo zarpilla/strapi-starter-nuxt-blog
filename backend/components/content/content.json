@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_contents",
+  "info": {
+    "name": "content",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true
+    },
+    "published_at": {
+      "type": "datetime"
+    }
+  }
+}

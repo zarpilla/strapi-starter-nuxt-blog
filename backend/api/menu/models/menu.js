@@ -1,15 +1,7 @@
 'use strict';
 
-const slugify = require('slugify');
-const slugifyOptions = {
-  replacement: '-',  // replace spaces with replacement character, defaults to `-`
-  remove: undefined, // remove characters that match regex, defaults to `undefined`
-  lower: true,      // convert to lower case, defaults to `false`
-  strict: true,     // strip special characters except replacement, defaults to `false`
-};
-
 /**
- * Lifecycle callbacks for the `category` model.
+ * Lifecycle callbacks for the `menu` model.
  */
 
 module.exports = {
@@ -60,13 +52,4 @@ module.exports = {
   // After destroying a value.
   // Fired after a `delete` query.
   // afterDestroy: async (model, attrs, options) => {}
-
-  // beforeSave: async (model, attrs, options) => {
-  //   if (options.method === 'insert' && attrs.title) {
-  //     model.set('slug', slugify(attrs.name, slugifyOptions));
-  //   } else if (options.method === 'update' && attrs.name) {
-  //     attrs.slug = slugify(attrs.name, slugifyOptions);
-  //   }
-  // },
-
 };

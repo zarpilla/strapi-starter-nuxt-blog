@@ -1,3 +1,6 @@
+import en from './lang/en'
+import es from './lang/es'
+
 export default {
   mode: "universal",
   /*
@@ -49,7 +52,12 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ["@nuxtjs/apollo", "@nuxtjs/markdownit"],
+  modules: [
+    "@nuxtjs/apollo",
+    "@nuxtjs/markdownit",
+    "@nuxtjs/axios",
+    "nuxt-i18n"
+  ],
   markdownit: {
     preset: "default",
     linkify: true,
@@ -63,6 +71,11 @@ export default {
       }
     }
   },
+  axios: {
+    // extra config e.g
+    // BaseURL: 'https://link-to-API'
+    baseURL: (process.env.API_URL || "http://localhost:1337")
+  },
   /*
    ** Build configuration
    */
@@ -70,7 +83,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
+    extend(config, ctx) { },
     babel: {
       presets({ isServer }) {
         return [
@@ -84,5 +97,29 @@ export default {
         ]
       }
     }
+  },
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        iso: 'en' // Will be used as catchall locale by default
+      },
+      {
+        code: 'es',
+        iso: 'es-ES'
+      }],
+    defaultLocale: 'es',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: { en: en, es: es }
+    },
+    seo: true
+    // parsePages: false,
+    // pages: {
+    //   'categories/_id': { 
+    //     en: '/category/:id',
+    //     es: '/categoria/:id',
+    //   },       
+    // },
   }
 };

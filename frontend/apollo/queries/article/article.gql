@@ -1,6 +1,7 @@
 query Articles($id: ID!) {
   article(id: $id) {
     id
+    slug
     title
     content
     image {

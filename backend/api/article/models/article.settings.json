@@ -1,43 +1,72 @@
 {
   "kind": "collectionType",
-  "connection": "default",
   "collectionName": "articles",
   "info": {
-    "name": "article"
+    "name": "Article"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
+    "title_es": {
+      "type": "string"
     },
-    "content": {
-      "type": "richtext",
-      "required": true
+    "title_en": {
+      "type": "string"
+    },
+    "slug_es": {
+      "type": "uid",
+      "targetField": "title_es"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "content_es": {
+      "type": "richtext"
+    },
+    "content_en": {
+      "type": "richtext"
     },
     "image": {
       "model": "file",
       "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
       "plugin": "upload",
-      "required": true
+      "required": false
     },
-    "published_at": {
-      "type": "date",
-      "required": true
+    "published_es": {
+      "type": "boolean",
+      "default": false
+    },
+    "published_en": {
+      "type": "boolean",
+      "default": false
+    },
+    "published_at_es": {
+      "type": "datetime"
+    },
+    "published_at_en": {
+      "type": "datetime"
     },
     "category": {
-      "via": "articles",
-      "model": "category"
+      "model": "category",
+      "via": "articles"
     },
-    "slug": {
-      "type": "string",
-      "unique": true
+    "seo_es": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo"
     },
-    "excerpt": {
-      "type": "text"
+    "seo_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo"
     }
   }
 }

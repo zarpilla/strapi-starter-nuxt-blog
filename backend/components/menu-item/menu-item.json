@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_menu_item_menu_items",
+  "info": {
+    "name": "MenuItem",
+    "icon": "bars"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "same_tab": {
+      "type": "boolean",
+      "default": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu-item.menu-sub-item"
+    }
+  }
+}

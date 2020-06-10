@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "name": "Page"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Blocks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.block"
+    },
+    "Introduction": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.block"
+    },
+    "PageBlocks": {
+      "type": "dynamiczone",
+      "components": [
+        "block.block"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    }
+  }
+}

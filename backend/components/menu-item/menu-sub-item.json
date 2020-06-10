@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_menu_item_menu_sub_items",
+  "info": {
+    "name": "MenuSubItem",
+    "icon": "asterisk"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "same_tab": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

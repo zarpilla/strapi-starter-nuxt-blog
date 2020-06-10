@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "landings",
+  "info": {
+    "name": "landing"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Introduction": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.block"
+    },
+    "Blocks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.block"
+    }
+  }
+}

@@ -10,17 +10,23 @@
     "timestamps": true
   },
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
+    "name_es": {
+      "type": "string"
+    },
+    "slug_es": {
+      "type": "uid",
+      "targetField": "name_es"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
     },
     "articles": {
-      "collection": "article",
-      "via": "category"
-    },
-    "slug": {
-      "type": "string",
-      "unique": true
+      "via": "category",
+      "collection": "article"
     }
   }
 }

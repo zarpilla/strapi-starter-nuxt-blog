@@ -1,14 +1,5 @@
 'use strict';
 
-const md5file = require('md5-file');
-
-const slugify = require('slugify');
-const slugifyOptions = {
-  replacement: '-',  // replace spaces with replacement character, defaults to `-`
-  remove: undefined, // remove characters that match regex, defaults to `undefined`
-  lower: true,      // convert to lower case, defaults to `false`
-  strict: true,     // strip special characters except replacement, defaults to `false`
-};
 /**
  * Lifecycle callbacks for the `article` model.
  */
@@ -61,15 +52,4 @@ module.exports = {
   // After destroying a value.
   // Fired after a `delete` query.
   // afterDestroy: async (model, attrs, options) => {}
-
-  
-
-  beforeSave: async (model, attrs, options) => {
-    if (options.method === 'insert' && attrs.title) {
-      model.set('slug', slugify(attrs.title, slugifyOptions));
-    } else if (options.method === 'update' && attrs.title) {
-      attrs.slug = slugify(attrs.title, slugifyOptions);
-    }
-  },
-
 };
