@@ -14,7 +14,7 @@ export default {
     title: process.env.npm_package_name || "",
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no" },
       {
         hid: "description",
         name: "description",
@@ -25,8 +25,21 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Staatliches"
+        href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css",
       }
+    ],
+    script: [
+      { src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js', body: true },
+      { src: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', body: true },
+      { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', body: true }
     ]
   },
   /*
@@ -37,14 +50,19 @@ export default {
    ** Global CSS
    */
   css: [
-    "uikit/dist/css/uikit.min.css",
-    "uikit/dist/css/uikit.css",
+    // "uikit/dist/css/uikit.min.css",
+    // "uikit/dist/css/uikit.css",    
+    'vue-slick-carousel/dist/vue-slick-carousel.css',
+    'vue-slick-carousel/dist/vue-slick-carousel-theme.css',
     "@assets/css/main.css"
   ],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "~/plugins/uikit.js", ssr: false }],
+  plugins: [
+    //{ src: "~/plugins/uikit.js", ssr: false }
+    { src: '~plugins/vue-slick-carousel.js', ssr: true },
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -56,7 +74,9 @@ export default {
     "@nuxtjs/apollo",
     "@nuxtjs/markdownit",
     "@nuxtjs/axios",
-    "nuxt-i18n"
+    "nuxt-i18n",
+    "nuxt-fontawesome",
+    'nuxt-moment'
   ],
   markdownit: {
     preset: "default",
@@ -113,6 +133,7 @@ export default {
       fallbackLocale: 'en',
       messages: { en: en, es: es }
     },
+    strategy: 'prefix_except_default',
     seo: true
     // parsePages: false,
     // pages: {
@@ -121,5 +142,18 @@ export default {
     //     es: '/categoria/:id',
     //   },       
     // },
+  },
+  fontawesome: {
+    imports: [
+      //import whole set
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab']
+      }
+    ]
   }
 };

@@ -1,1 +1,6 @@
-{ "hello": "hola" }
+{ 
+    "hello": "hello",
+    "discover": "Discover more",
+    "read-more": "Read more",
+    "address": "Dirección"
+ }

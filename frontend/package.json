@@ -13,15 +13,19 @@
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.0-rc17",
     "@nuxtjs/axios": "^5.11.0",
-    "@nuxtjs/markdownit": "^1.2.7",
+    "@nuxtjs/markdownit": "^1.2.10",
     "graphql": "^14.5.8",
     "nuxt": "^2.12.2",
     "nuxt-i18n": "^6.12.2",
-    "uikit": "^3.2.3"
+    "nuxt-moment": "^1.0.5",
+    "uikit": "^3.2.3",
+    "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
     "@babel/runtime-corejs3": "^7.9.6",
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0"
   },
   "license": "MIT"
 }

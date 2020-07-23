@@ -1,1 +1,5 @@
-{ "hello": "hola" }
+{ 
+    "hello": "hola",
+    "discover": "Descúbrelo aquí",
+    "read-more": "Seguir leyendo"
+ }

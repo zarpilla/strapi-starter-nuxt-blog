@@ -13,20 +13,20 @@
     <div class="uk-section">
       <div class="uk-container uk-container-small">
         <div v-if="article[content_]" id="editor" v-html="$md.render(article[content_])"></div>
-        <p v-if="article[published_at_]">{{ moment(article[published_at_]).format("MMM Do YY") }}</p>
+        <p v-if="article[published_at_]">{{ $moment(article[published_at_]).format("MMM Do YY") }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-var moment = require("moment");
+//var moment = require("moment");
 
 export default {
   data() {
     return {
       article: {},
-      moment: moment,
+      //moment: moment,
       api_url: process.env.strapiBaseUri
     };
   },

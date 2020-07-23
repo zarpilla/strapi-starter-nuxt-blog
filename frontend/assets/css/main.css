@@ -1,41 +1,118 @@
+body{  
+  color:#575757;
+  color:#666666;
+  font-family: 'Open Sans';
+}
+h1, h2, h3, h4, h5{
+  color:#666666;
+}
 a {
   text-decoration: none;
 }
-
-h1  {
-  font-family: Staatliches;
-  font-size: 120px;
+.normal-title{
+  color: #575757;
+  font-weight: bold;
 }
-
-#category {
-   font-family: Staatliches;
-   font-weight: 500;
+.carousel{
+  overflow: hidden;
 }
-
-#title {
-  letter-spacing: .4px;
-  font-size: 22px;
-  font-size: 1.375rem;
-  line-height: 1.13636;
-}
-
-#banner {
-  margin: 20px;
-  height: 800px;
-}
-
-#editor {
-  font-size: 16px;
+.call-to-action {
+  border: 2px solid #fff;
+  padding: 12px 28px;
+  text-transform: uppercase;
+  color: #fff;
   font-size: 1rem;
-  line-height: 1.75;
+  margin-top: 50px;
+  display: inline-block;
+  text-decoration: none;
+}
+.block-b .call-to-action{
+  color: #ec6901;  
+  border-color: #ec6901;
+}
+.right-block img{
+  margin-bottom: 20px;
 }
 
-.uk-navbar-container {
-  background: #fff !important;
-  font-family: Staatliches;
+.block-c .block-item:hover img{
+  filter: brightness(0) invert(1);
 }
 
-img:hover {
-  opacity: 1;
-  transition: opacity 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
+.mt-1r{
+margin-top: 1rem;
+}
+.mt-2r{
+margin-top: 2rem;
+}
+.mt-3r{
+margin-top: 3rem;
+}
+.mt-4r{
+margin-top: 4rem;
+}
+.mt-5r{
+margin-top: 5rem;
+}
+.mt-6r{
+margin-top: 6rem;
+}
+.mt-7r{
+margin-top: 7rem;
+}
+.mt-8r{
+margin-top: 8rem;
+}
+.mb-1r{
+margin-bottom: 1rem;
+}
+.mb-2r{
+margin-bottom: 2rem;
+}
+.mb-3r{
+margin-bottom: 3rem;
+}
+.mb-4r{
+margin-bottom: 4rem;
+}
+.mb-5r{
+margin-bottom: 5rem;
+}
+.mb-6r{
+margin-bottom: 6rem;
+}
+.mb-7r{
+margin-bottom: 7rem;
+}
+.mb-8r{
+margin-bottom: 8rem;
+}
+.navbar-light .navbar-toggler{
+  color:#111;
+  border: 0;
+}
+.content ul {
+  list-style: none;
+  padding-left: 0px;
+  margin: 0;
+}
+.content li {
+  padding-left: 30px;
+  margin-bottom: 16px;
+  
+}
+.content ul li:before {
+  color: #ec6901;  
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+  font-size:30px;
+  vertical-align:-6px;
+  line-height: 4px;
+}
+@media (min-width: 1440px) {
+  .container-xl{
+    max-width: 1440px;
+  }
 }

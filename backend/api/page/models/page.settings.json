@@ -9,28 +9,56 @@
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "title_es": {
       "type": "string"
     },
-    "Blocks": {
+    "title_en": {
+      "type": "string"
+    },
+    "slug_es": {
+      "type": "uid",
+      "targetField": "title_es"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "seo_es": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo"
+    },
+    "seo_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo"
+    },
+    "slider_es": {
       "type": "component",
       "repeatable": true,
       "component": "block.block"
     },
-    "Introduction": {
+    "slider_en": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "block.block"
     },
-    "PageBlocks": {
+    "blocks_es": {
       "type": "dynamiczone",
       "components": [
-        "block.block"
+        "block.block",
+        "items-block.items-block"
       ]
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "Title"
+    "blocks_en": {
+      "type": "dynamiczone",
+      "components": [
+        "block.block",
+        "items-block.items-block"
+      ]
+    },
+    "parent": {
+      "model": "page"
     }
   }
 }

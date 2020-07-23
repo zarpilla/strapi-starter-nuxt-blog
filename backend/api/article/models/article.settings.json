@@ -55,8 +55,8 @@
       "type": "datetime"
     },
     "category": {
-      "model": "category",
-      "via": "articles"
+      "via": "articles",
+      "model": "category"
     },
     "seo_es": {
       "type": "component",

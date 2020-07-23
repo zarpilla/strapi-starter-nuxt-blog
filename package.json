@@ -20,6 +20,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "nuxt-fontawesome": "^0.4.0",
     "pg": "^8.2.1"
   }
 }

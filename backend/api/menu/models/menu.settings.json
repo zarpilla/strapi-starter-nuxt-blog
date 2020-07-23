@@ -17,6 +17,9 @@
       "type": "component",
       "repeatable": true,
       "component": "menu-item.menu-item"
+    },
+    "text": {
+      "type": "string"
     }
   }
 }

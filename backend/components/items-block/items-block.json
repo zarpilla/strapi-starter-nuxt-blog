@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_block_blocks",
+  "collectionName": "components_items_block_items_blocks",
   "info": {
-    "name": "Block",
-    "icon": "caret-square-right"
+    "name": "ItemsBlock",
+    "icon": "battery-three-quarters"
   },
   "options": {},
   "attributes": {
@@ -12,8 +12,8 @@
     "description": {
       "type": "richtext"
     },
-    "image": {
-      "model": "file",
+    "pictures": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -26,6 +26,11 @@
     "href": {
       "type": "string"
     },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.block"
+    },
     "css": {
       "type": "string"
     },
@@ -35,26 +40,14 @@
     "block_type": {
       "type": "string"
     },
-    "icon": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "type": {
       "type": "enumeration",
       "enum": [
-        "Text",
-        "Bgimage",
-        "ImageText",
-        "ContactForm",
-        "Map",
-        "LastNews"
+        "Carousel",
+        "Goto",
+        "SevenItems",
+        "Children",
+        "Columns"
       ]
     }
   }

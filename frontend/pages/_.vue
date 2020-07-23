@@ -2,8 +2,8 @@
   <div>
     <slider v-if="page" :data="page[slider_]" :page="page" :social="social"></slider>
 
-    <blocks v-if="page" :blocks="page[blocks_]"></blocks>
-    
+    <blocks v-if="page" :blocks="page[blocks_]" :slug="slug"></blocks>    
+
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import Slider from "~/components/Slider";
 import Blocks from "~/components/Blocks";
 
 export default {
-  components: {
+  components: {    
     Slider,
     Blocks
   },
@@ -21,7 +21,8 @@ export default {
       page: {},
       social: {},
       api_url: process.env.strapiBaseUri,
-      categories: []
+      categories: [],
+      slug: ''
     };
   },
   computed: {
@@ -36,11 +37,15 @@ export default {
     }
   },
   async asyncData({ $axios, app }) {
-    const pages = await $axios.$get(`/pages/?slug_${app.i18n.locale}=home`);
-    
-    const social = await $axios.$get(`/menus?name=social_${app.i18n.locale}`);
 
-    return { page: pages[0], social: social[0] };
+    const pathMatch = app.context.route.params.pathMatch
+    const pathMatchSlug = pathMatch.endsWith('/') ? pathMatch.substring(0, pathMatch.length -1 ) : pathMatch
+    let index = pathMatchSlug.indexOf('/')    
+    const slug = pathMatchSlug.substring(index).replace(/\//, '')
+    const pages = await $axios.$get(`/pages/?slug_${app.i18n.locale}=${slug}`)
+    const social = await $axios.$get(`/menus?name=social_${app.i18n.locale}`)
+
+    return { page: pages[0], social: social[0], slug: slug };
   },
   head() {
     return {
@@ -72,8 +77,8 @@ export default {
     };
   },
   mounted() {
-    console.log('index mounted')
-    console.log("page", JSON.parse(JSON.stringify(this.page)));
+    console.log('_vue mounted')
+    //console.log("page", JSON.parse(JSON.stringify(this.page)));
   }
 
   // apollo: {
