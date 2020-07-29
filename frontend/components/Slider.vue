@@ -1,5 +1,5 @@
 <template>
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">        
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" v-if="data">        
     <ol class="carousel-indicators" v-if="data.length > 1">
       <li
         data-target="#carouselExampleCaptions"
@@ -18,7 +18,7 @@
           v-bind:class="{ 'active' : i == 0 }"
         >
           <img v-if="slide.image" v-bind:src="api_url + slide.image.url" class="d-block w-100" alt />
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption zd-none zd-md-block">
             <div class="container-xl">
               <div class="xbreadcrumb" v-if="page && page.parent">
                 <nuxt-link :to="page.parent[slug_]">
@@ -139,4 +139,21 @@ export default {
 .sep{
   padding: 0 15px;
 }
+@media (max-width: 768px) {
+  .carousel-caption {
+    bottom: auto;
+    top:50px;
+  }
+  .carousel-caption h1{
+    font-size: 26px;
+  }
+  .carousel-caption .call-to-action{
+    display: none;
+  }
+  .carousel-indicators{
+    display: none;
+  }
+}
+
+
 </style>

@@ -92,8 +92,8 @@ export default {
     return {
       title:
         this.article && this.article[`seo_${this.$i18n.locale}`]
-          ? this.article[`seo_${this.$i18n.locale}`].meta_title
-          : this.article[this.title_],
+          ? this.article[`seo_${this.$i18n.locale}`].meta_title + ' | ' + this.t('meta-company')
+          : this.article[this.title_] + this.t('meta-company'),
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
@@ -156,6 +156,8 @@ export default {
         icon: null,
       },
     ];
+
+    console.log('slider', slider)
 
     var { data } = await $axios.get(`/menus?name=social_${app.i18n.locale}`);
     const social = data[0];

@@ -10,7 +10,8 @@
 <script>
 import Slider from "~/components/Slider";
 import Blocks from "~/components/Blocks";
-
+import { mapGetters } from "vuex";
+    
 export default {
   components: {    
     Slider,
@@ -34,7 +35,10 @@ export default {
     },
     blocks_() {
       return `blocks_` + this.$i18n.locale;
-    }
+    },
+    ...mapGetters({
+      texts: "texts/get",
+    }),
   },
   async asyncData({ $axios, app }) {
 
@@ -42,17 +46,21 @@ export default {
     const pathMatchSlug = pathMatch.endsWith('/') ? pathMatch.substring(0, pathMatch.length -1 ) : pathMatch
     let index = pathMatchSlug.indexOf('/')    
     const slug = pathMatchSlug.substring(index).replace(/\//, '')
-    const pages = await $axios.$get(`/pages/?slug_${app.i18n.locale}=${slug}`)
+    const pages = await $axios.$get(`/pages/?slug_${app.i18n.locale}=${slug}`)    
     const social = await $axios.$get(`/menus?name=social_${app.i18n.locale}`)
-
-    return { page: pages[0], social: social[0], slug: slug };
+    let page = pages && pages.length > 0 ? pages[0] : null
+    if (page == null) {
+      let error = await $axios.$get(`/pages/?slug_${app.i18n.locale}=error`)
+      page = error[0]
+    }
+    return { page: page, social: social[0], slug: slug };
   },
   head() {
     return {
       title:
         this.page && this.page[`seo_${this.$i18n.locale}`]
-          ? this.page[`seo_${this.$i18n.locale}`].meta_title
-          : this.page[this.title_],
+          ? this.page[`seo_${this.$i18n.locale}`].meta_title + this.t('meta-company')
+          : this.page[this.title_]  + this.t('meta-company'),
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
@@ -79,6 +87,13 @@ export default {
   mounted() {
     console.log('_vue mounted')
     //console.log("page", JSON.parse(JSON.stringify(this.page)));
+  },
+  methods: {
+    t(key) {
+      return this.texts.find((t) => t.key == key)
+        ? this.texts.find((t) => t.key == key)[`text_` + this.$i18n.locale]
+        : key;
+    },
   }
 
   // apollo: {

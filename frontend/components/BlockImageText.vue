@@ -87,6 +87,7 @@ export default {
 }
 .block-image-text {
   position: relative;
+  background-size: contain;
 }
 .container-white {
   position: absolute;

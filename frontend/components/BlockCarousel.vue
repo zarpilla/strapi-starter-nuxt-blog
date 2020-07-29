@@ -15,17 +15,20 @@
       v-bind="settings"
     >
       <div v-for="item in block.items" v-bind:key="item.id" class="wrapper-image zcol-md-4">
-        <h2 class="title title-a text-center">{{ item.title }}</h2>
+        <nuxt-link :to="item.href">
+<h2 class="title title-a text-center">{{ item.title }}</h2>
         <div class="mouseovered-text text-center animate__animated animate__fadeIn">
           
           <div class="mouseovered-content">
-            <h2 class="title titleover text-center">{{ item.title }}</h2>
+            <h2 class="title titleover text-center">{{ item.title }} {{ item.href }}</h2>
             <div class="text text-center">{{ item.description }}</div>
           </div>
           <div class="overlay"></div>
         </div>
         <div class="overlay-0"></div>
         <img v-if="item.image" v-bind:src="api_url + item.image.url" />
+        </nuxt-link>
+        
       </div>
     </slick-carousel>
   </div>
@@ -53,7 +56,9 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+    this.settings.slidesToShow = window.innerWidth > 768 ? 3 : 1
+  },
 };
 </script>  
 <style scoped>
@@ -237,5 +242,10 @@ export default {
 }
 .slick-dots li button:before {
   display: none;
+}
+@media (max-width: 768px) {
+  .slick-dots{
+    display: none!important;
+  }
 }
 </style>

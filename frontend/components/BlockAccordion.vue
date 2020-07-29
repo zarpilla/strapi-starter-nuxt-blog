@@ -153,6 +153,7 @@ export default {
 }
 .block-image-text {
   position: relative;
+  background-size: contain;
 }
 .container-white {
   position: absolute;
@@ -180,10 +181,20 @@ export default {
 }
 .xcard{
   margin-bottom: 1rem;
+  border-radius: 0;
 }
 .card-header{
   background-color: #fff;
+  border-top: 1px solid #ec6901;
   border-bottom: 1px solid #ec6901;
+  padding-left: 0;
+  padding-right: 0;
+}
+.card-header .icon{
+  margin-right: 0.5rem;
+}
+.card-header:first-child{
+  border-radius: 0;
 }
 .btn-link{
   color: #666;

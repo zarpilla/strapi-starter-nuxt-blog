@@ -37,9 +37,6 @@
     "identifier": {
       "type": "string"
     },
-    "block_type": {
-      "type": "string"
-    },
     "type": {
       "type": "enumeration",
       "enum": [

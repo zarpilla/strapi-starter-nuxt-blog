@@ -5,7 +5,7 @@
         </div>
         <div class="row" v-if="block.__component == 'items-block.items-block'">
           <div v-for="(item, j) in block.items" v-bind:key="item.id" class="col-md">            
-            <nuxt-link :to="item.href ? item.href : '/'"
+            <a v-bind:href="item.href ? item.href : '/'"
               class="block-item"
               @mouseover="mouseovered2 = j"
               @mouseleave="mouseovered2 = -1"
@@ -16,7 +16,7 @@
               </div>                
                 <h2 class="title title-c rel">{{ item.title }}</h2>
                 <p v-if="item.description" class="desc rel">{{ item.description }}</p>
-            </nuxt-link>              
+            </a>              
           </div>
         </div>
   </div>

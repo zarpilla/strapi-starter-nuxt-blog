@@ -32,9 +32,6 @@
     "identifier": {
       "type": "string"
     },
-    "block_type": {
-      "type": "string"
-    },
     "icon": {
       "model": "file",
       "via": "related",
