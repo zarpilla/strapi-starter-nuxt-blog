@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+
     <div v-for="block in blocks" v-bind:key="block.id" class="blocks">
 
       <div v-if="block.__component == 'items-block.items-block' && block.type == 'Carousel'" class="container-xl blocks block-a">
@@ -44,7 +44,11 @@
       </div>
 
       <div v-if="block.__component == 'block.block' && block.type == 'LastNews'" class="block-block block-contact">        
-        <block-last-news :block="block" :texts="texts"></block-last-news>
+        <block-last-news :block="block" :texts="texts" :layout="block.css ? block.css : 'z'" :columns-css="'row-cols-md-3'" :limit="block.identifier ? parseInt(block.identifier) : 9"></block-last-news>
+      </div>
+
+      <div v-if="block.__component == 'items-block.items-block' && block.type == 'Accordion'" class="block-block block-accordion">                
+        <block-accordion :block="block"></block-accordion>
       </div>
       
       
@@ -64,10 +68,14 @@ import BlockColumns from './BlockColumns'
 import BlockContact from './BlockContact'
 import BlockMap from './BlockMap'
 import BlockLastNews from "./BlockLastNews"
+import BlockAccordion from "./BlockAccordion"
+
+
+import { mapMutations, mapGetters } from 'vuex'
 
 export default {
   components: {
-    BlockCarousel, BlockText, BlockBgimage, BlockGoto, BlockSeven, BlockImageText, BlockChildren, BlockColumns, BlockContact, BlockMap, BlockLastNews
+    BlockCarousel, BlockText, BlockBgimage, BlockGoto, BlockSeven, BlockImageText, BlockChildren, BlockColumns, BlockContact, BlockMap, BlockLastNews, BlockAccordion
   },
   props: {
     blocks: Array,
@@ -77,22 +85,15 @@ export default {
     return {
       api_url: process.env.strapiBaseUri,
       mouseovered: -1,
-      mouseovered2: -1,
-      texts: []
+      mouseovered2: -1,      
     };
-  },
-  async fetch() {
-    var { data } = await this.$axios.get(`/texts`);
-    this.texts = data;    
-  },
-  fetchOnServer: true,
-  // methods: {
-  //   t(key) {
-  //     return this.texts.find(t => t.key == key)
-  //       ? this.texts.find(t => t.key == key)[`text_` + this.$i18n.locale]
-  //       : "";
-  //   }
-  // }
+  },  
+  computed: mapGetters({
+    texts: 'texts/get'
+  }),
+  // async fetch() {    
+  // },
+  // fetchOnServer: true,  
 };
 </script>  
 <style scoped>

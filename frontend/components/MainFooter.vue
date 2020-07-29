@@ -1,12 +1,12 @@
 <template>
   <footer class="footer">
-    <div class="container-xl">
+    <div class="container-xl" v-if="texts && texts.length > 0">
       <div class="row">
         <div class="col-md">
           <a class="zbrand" href="/">
-            <img class="image-iap" src="~/assets/images/logo_iap_bn.png" alt="" />            
+            <img class="image-iap" v-bind:src="api_url + img('footer-logo')" alt="" />        
           </a>
-          <img class="image-min" src="~/assets/images/logo ministerio.png" alt="" />
+          <img class="image-min" v-bind:src="api_url + img('footer-logo-2')" alt="" />
         </div>
         <div class="col-md">
           <h5 v-if="footer2.text">{{footer2.text}}</h5>
@@ -43,18 +43,25 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
+
 export default {
+  props: {
+    images: Array
+  },
   data() {
     return {
-      texts: [],
+      //texts: [],
       social: {},
       footer1: {},
-      footer2: {}
+      footer2: {},
+      api_url: process.env.strapiBaseUri,
     };
   },
-  async fetch() {
-    var { data } = await this.$axios.get(`/texts`);
-    this.texts = data;
+  computed: mapGetters({
+    texts: 'texts/get'
+  }),
+  async fetch() {    
     var { data } = await this.$axios.get(`/menus?name=social_${this.$i18n.locale}`);       
     this.social = data[0];
     var { data } = await this.$axios.get(`/menus?name=footer1_${this.$i18n.locale}`);       
@@ -68,7 +75,12 @@ export default {
       return this.texts.find(t => t.key == key)
         ? this.texts.find(t => t.key == key)[`text_` + this.$i18n.locale]
         : "";
-    }
+    },
+    img(key) {
+      return this.images.find((t) => t.key == key)
+        ? this.images.find((t) => t.key == key)[`image_` + this.$i18n.locale].url
+        : "";
+    },
   }
 };
 </script>  
@@ -77,7 +89,7 @@ export default {
   position: relative;
   bottom: 0;
   width: 100%;
-  background-color: #35393C;
+  background-color: #323639;
   color: #ddd;
   padding-top: 20px;
   font-size: 0.9rem;

@@ -45,9 +45,9 @@
             <font-awesome-icon class="icon" :icon="['fab', item.text]" />
           </a>        
         </div>
-      </div>
-      
+      </div>      
     </div>
+    
   </div>
 </template>
 

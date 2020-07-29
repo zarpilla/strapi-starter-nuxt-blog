@@ -8,7 +8,7 @@
         v-html="$md.render(block.description)"
       ></div>
 
-      <div class="row contact">
+      <div class="row map">
         <div class="col">
           <iframe v-bind:src="block.href" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacts",
+  "info": {
+    "name": "Contact"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "company": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "surnames": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "byphone": {
+      "type": "boolean"
+    },
+    "lang": {
+      "type": "string"
+    }
+  }
+}

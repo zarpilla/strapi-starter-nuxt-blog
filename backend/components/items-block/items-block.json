@@ -12,8 +12,8 @@
     "description": {
       "type": "richtext"
     },
-    "pictures": {
-      "collection": "file",
+    "image": {
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -47,7 +47,8 @@
         "Goto",
         "SevenItems",
         "Children",
-        "Columns"
+        "Columns",
+        "Accordion"
       ]
     }
   }
