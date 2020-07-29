@@ -31,7 +31,13 @@
                         v-bind:data-target="'#collapse-' + j"
                         v-bind:aria-expanded="j == 0"
                         aria-controls="collapseOne"
-                      >{{ item.title }}</button>
+                        @click="openAccordion(j)"
+                      >
+                      
+                      <font-awesome-icon v-if="clicked != j" class="icon" icon="plus" />
+                      <font-awesome-icon v-if="clicked == j" class="icon" icon="minus" />
+                      {{ item.title }}
+                      </button>
                     </h5>
                   </div>
 
@@ -84,8 +90,19 @@ export default {
   data() {
     return {
       api_url: process.env.strapiBaseUri,
+      clicked: 0
     };
   },
+  methods: {
+    openAccordion(j) {
+      if (this.clicked == j) {
+        this.clicked = -1
+      }
+      else {
+        this.clicked = j
+      }
+    }
+  }
 };
 </script>  
 <style lang="less" scoped>
@@ -174,6 +191,10 @@ export default {
   font-size: 1.1rem;
 }
 .btn-link:hover{
+  text-decoration: none;
+}
+.btn:focus{
+  box-shadow: none;
   text-decoration: none;
 }
 </style>

@@ -14,11 +14,11 @@
             {{ item.text }}
           </a>
         </div>
-        <div class="col-md address">
+        <div class="col-md address" v-if="t('address-detail') != ''">
           <h5 v-html="t('address')"></h5>
           <div class="more" v-html="$md.render(t('address-detail'))" />
         </div>
-        <div class="col-md">
+        <div class="col-md" v-if="t('address-detail') != ''">
           <h5 v-html="t('phones')"></h5>
           <div class="more" v-html="$md.render(t('phones-detail'))" />
         </div>
